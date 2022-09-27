@@ -1,0 +1,74 @@
+/**
+ * Homepage
+ */
+
+#main {
+  margin-bottom: 100px;
+  margin-top: 100px;
+  background-color: $strong-orange-color;
+
+  @include media-query($on-palm) {
+    margin-bottom: 0px;
+  }
+}
+
+.home-content {
+    padding-top: 5px;
+}
+
+.home-container {
+  display: -webkit-flex;
+  display: flex;
+}
+
+.main-title {
+  margin-left: 300px;
+  font-size: 10rem;
+  font-weight: bold;
+}
+
+.intro {
+    width: $full-width;
+    padding-bottom: 25px;
+    margin-top: 70px;
+    margin-left: 40px;
+
+    > .inside-image {
+      width: $full-width;
+    }
+
+  @include media-query($on-palm) {
+    padding-bottom: 0px;
+    margin-top: 140px;
+
+    > .inside-image {
+      width: $full-width;
+    }
+  }
+}
+
+.full-display {
+  @include media-query($on-palm) {
+    display: none;
+  }
+}
+
+.mobile-display {
+  display: none;
+  @include media-query($on-palm) {
+    display: block;
+  }
+}
+
+.explanation {
+    font-size: 28px;
+    text-align: left;
+    margin-left: 300px;
+    margin-bottom: 50px;
+
+  @include media-query($on-palm) {
+    font-size: 8px;
+    margin-bottom: 10px;
+    margin-left: 20px;
+  }
+}
