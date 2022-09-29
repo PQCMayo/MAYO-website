@@ -8,7 +8,8 @@
   background-color: $strong-orange-color;
 
   @include media-query($on-palm) {
-    margin-bottom: 0px;
+    margin-bottom: 50px;
+    margin-top: 50px;
   }
 }
 
@@ -19,12 +20,21 @@
 .home-container {
   display: -webkit-flex;
   display: flex;
+
+  @include media-query($on-palm) {
+    display: block;
+  }
 }
 
 .main-title {
   margin-left: 300px;
   font-size: 10rem;
   font-weight: bold;
+
+  @include media-query($on-palm) {
+    margin-left: 40px;
+    font-size: 7rem;
+  }
 }
 
 .intro {
@@ -38,8 +48,9 @@
     }
 
   @include media-query($on-palm) {
-    padding-bottom: 0px;
-    margin-top: 140px;
+    padding-bottom: 20px;
+    margin-top: 10px;
+    margin-left: 100px;
 
     > .inside-image {
       width: $full-width;
