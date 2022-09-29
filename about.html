@@ -4,3 +4,17 @@ permalink: /about/
 title: about
 tags: menu
 ---
+
+<div>
+<br>
+<p>
+The Oil and Vinegar signature scheme, proposed in 1997 by Patarin, is one of the oldest and best understood multivariate quadratic signature schemes. It has excellent performance and signature sizes but suffers from large key sizes on the order of 50 KB, which makes it less practical as a general-purpose signature scheme.</p>
+<br>
+<p>To solve this problem, we propose <strong>MAYO</strong>, a variant of the UOV signature scheme whose public keys are two orders of magnitude smaller. MAYO works by using a UOV map with an unusually small oil space, which makes it possible to represent the public key very compactly. The usual UOV signing algorithm fails if the oil space is too small, but MAYO works around this problem by "whipping up" the base oil and vinegar map into a larger map, that does have a sufficiently large oil space.
+</p>
+<br>
+<p>
+With parameters targeting NISTPQC security level I, MAYO has a public key size of only 614 Bytes and a signature size of 392 Bytes. This makes MAYO more compact than state-of-the-art lattice-based signature schemes such as Falcon and Dilithium. Moreover, we can choose MAYO parameters such that, unlike traditional UOV signatures, signatures provably only leak a negligible amount of information about the private key.
+</p>
+<br>
+</div>
