@@ -1,0 +1,147 @@
+---
+layout: page
+permalink: /params-times/
+title: params and times
+tags: menu
+usemathjax: true
+---
+
+<div>
+  <br>
+	<h3>Parameters: </h3>
+  <br>
+  <p>Our current parameters are (note that this might change):</p>
+  <br>
+  <p>We select and implement four parameter sets: For <strong>NIST security level 1</strong>, we select two parameter sets: <code>MAYO_one</code> and <code>MAYO_two</code>, where <code>MAYO_one</code> has smaller public keys but larger signatures and conversely <code>MAYO_two</code> has smaller signatures but larger public keys. For <strong>NIST security level 3</strong> and <strong>NIST security level 5</strong>, we select one parameter set each, which we refer to as <code>MAYO_three</code> and <code>MAYO_five</code>, respectively. The parameter sets and the corresponding key and signature sizes are displayed below.</p>
+	<br>
+	<p>Our chosen parameter sets use the following three irreducible polynomials in $F_{16}[z]$ (the first one is used both in <code>MAYO_one</code> and <code>MAYO_two</code>):
+
+\begin{align*}
+    \begin{array}{r c l l l l l l}
+        f_{64}(z)  & = & z^{64}  &        &+ x^3 z^3 &+ x z^2 &        & + x^3  \\
+        f_{96}(z)  & = & z^{96}  &        &+   x z^3 &        &+ x z   & + x     \\
+        f_{128}(z) & = & z^{128} &+ x z^4 &+ x^2 z^3 &        &+ x^3 z & + x^2
+    \end{array}
+\end{align*}
+
+	<br>
+	<br>
+<center>
+<table>
+    <tr>
+        <th>Parameter set</th>
+        <td><code>MAYO_one</code></td>
+        <td><code>MAYO_two</code></td>
+        <td><code>MAYO_three</code></td>
+        <td><code>MAYO_five</code></td>
+    </tr>
+    <tr>
+        <th>security level</th>
+        <td>1</td>
+        <td>1</td>
+        <td>3</td>
+        <td>5</td>
+    </tr>
+    <tr>
+        <th>$n$</th>
+        <td>66</td>
+        <td>78</td>
+        <td>99</td>
+        <td>133</td>
+    </tr>
+    <tr>
+        <th>$m$</th>
+        <td>64</td>
+        <td>64</td>
+        <td>96</td>
+        <td>128</td>
+    </tr>
+    <tr>
+        <th>$o$</th>
+        <td>8</td>
+        <td>18</td>
+        <td>10</td>
+        <td>12</td>
+    </tr>
+    <tr>
+        <th>$k$</th>
+        <td>9</td>
+        <td>4</td>
+        <td>11</td>
+        <td>12</td>
+    </tr>
+    <tr>
+        <th>$q$</th>
+        <td>16</td>
+        <td>16</td>
+        <td>16</td>
+        <td>16</td>
+    </tr>
+    <tr>
+        <th><code>salt_bytes</code></th>
+        <td>24</td>
+        <td>24</td>
+        <td>32</td>
+        <td>40</td>
+    </tr>
+    <tr>
+        <th><code>digest_bytes</code></th>
+        <td>32</td>
+        <td>32</td>
+        <td>48</td>
+        <td>64</td>
+    </tr>
+    <tr>
+        <th><code>pk_seed_bytes</code></th>
+        <td>16</td>
+        <td>16</td>
+        <td>16</td>
+        <td>16</td>
+    </tr>
+    <tr>
+        <th>$f(z)$</th>
+        <td>$f_{64}(z)$</td>
+        <td>$f_{64}(z)$</td>
+        <td>$f_{96}(z)$</td>
+        <td>$f_{128}(z)$</td>
+    </tr>
+    <tr>
+        <th>secret key size</th>
+        <td>24 B</td>
+        <td>24 B</td>
+        <td>32 B</td>
+        <td>40 B</td>
+    </tr>
+    <tr>
+        <th>public key size</th>
+        <td>1168 B</td>
+        <td>5488 B</td>
+        <td>2656 B</td>
+        <td>5008 B</td>
+    </tr>
+    <tr>
+        <th>signature size</th>
+        <td>321 B</td>
+        <td>180 B</td>
+        <td>577 B</td>
+        <td>838 B</td>
+    </tr>
+    <tr>
+        <th>expanded $sk$ size</th>
+        <td>69 KB</td>
+        <td>92 KB</td>
+        <td>230 KB</td>
+        <td>553 KB</td>
+    </tr>
+    <tr>
+        <th>expanded $pk$ size</th>
+        <td>70 KB</td>
+        <td>97 KB</td>
+        <td>233 KB</td>
+        <td>557 KB</td>
+    </tr>
+</table>
+</center>
+
+<br>
+<br>

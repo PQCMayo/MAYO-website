@@ -318,3 +318,13 @@ $icon-github: (
     color: $strong-orange-color;
   }
 }
+
+table, th, td {
+  border: 5px solid black;
+  border-collapse: collapse;
+  padding: 1rem;
+}
+
+th {
+  font-weight: 900;
+}
