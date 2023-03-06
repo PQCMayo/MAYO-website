@@ -142,6 +142,105 @@ usemathjax: true
     </tr>
 </table>
 </center>
+<br>
 
+	<h3>Times: </h3>
+  <br>
+	<p>We ran the performance evaluation on an Intel Core i7-9750H CPU (Coffee Lake) with 2.6 GHz on macOS 13.1. The library was compiled with Apple Clang version 14.0.0. Both builds use <code>-O3</code> compiler optimization level and <code>-march=native</code> build architecture. Turbo Boost was deactivated to achieve consistent timings.</p>
+	<p>The tables below show MAYO performance in CPU cycles on an Intel Core i7-9750H CPU (Coffee Lake) with 2.6 GHz. Results are the median of 1000 benchmark runs.</p>
+	<br>
+	<p>Reference Implementation (portable C code):</p>
+	<br>
+<center>
+<table>
+    <tr>
+        <td>Scheme</td>
+        <td>KeyGen</td>
+        <td>ExpandSK</td>
+        <td>ExpandPK</td>
+        <td>ExpandSK + Sign</td>
+        <td>ExpandPK + Verify</td>
+    </tr>
+    <tr>
+        <td><code>MAYO_one</td>
+        <td>1,773,744</td>
+        <td>1,896,746</td>
+        <td>1,440,568</td>
+        <td>2,911,928</td>
+        <td>1,683,642</td>
+    </tr>
+    <tr>
+        <td><code>MAYO_two</td>
+        <td>2,950,054</td>
+        <td>2,938,708</td>
+        <td>1,921,372</td>
+        <td>3,776,734</td>
+        <td>2,044,548</td>
+    </tr>
+    <tr>
+        <td><code>MAYO_three</td>
+        <td>9,017,556</td>
+        <td>11,648,154</td>
+        <td>4,860,054</td>
+        <td>18,460,098</td>
+        <td>6,503,420</td>
+    </tr>
+    <tr>
+        <td><code>MAYO_five</td>
+        <td>17,259,936</td>
+        <td>21,298,874</td>
+        <td>11,690,506</td>
+        <td>30,346,622</td>
+        <td>13,702,168</td>
+    </tr>
+</table>
+</center>
 <br>
+	<p>Reference Implementation (using AES-NI):</p>
 <br>
+<center>
+<table>
+    <tr>
+        <td>Scheme</td>
+        <td>KeyGen</td>
+        <td>ExpandSK</td>
+        <td>ExpandPK</td>
+        <td>ExpandSK + Sign</td>
+        <td>ExpandPK + Verify</td>
+    </tr>
+    <tr>
+        <td><code>MAYO_one</td>
+        <td>369,358</td>
+        <td>490,950</td>
+        <td>44,046</td>
+        <td>1,507,684</td>
+        <td>285,744</td>
+    </tr>
+    <tr>
+        <td><code>MAYO_two</td>
+        <td>1,086,330</td>
+        <td>1,083,370</td>
+        <td>59,202</td>
+        <td>1,897,138</td>
+        <td>168,686</td>
+    </tr>
+    <tr>
+        <td><code>MAYO_three</td>
+        <td>4,245,918</td>
+        <td>6,868,780</td>
+        <td>147,794</td>
+        <td>13,684,206</td>
+        <td>13,684,206</td>
+    </tr>
+    <tr>
+        <td><code>MAYO_five</td>
+        <td>5,928,022</td>
+        <td>9,831,314</td>
+        <td>354,744</td>
+        <td>18,990,710</td>
+        <td>2,329,306</td>
+    </tr>
+</table>
+</center>
+<br><br>
+</div>
