@@ -36,7 +36,7 @@
     float: right;
     margin-top: -50px;
     font-size: 20px;
-    border-bottom: solid 5px $strong-orange-color;
+    border-bottom: solid 5px #ffffff;
 
     @include media-query($on-palm) {
         margin-left: 90px;
@@ -441,4 +441,39 @@
 
 .post-box {
     display: flex;
+}
+
+table, thead, tbody, th, td, tr {
+  @include media-query($on-palm) {
+    display: block;
+  }
+}
+
+thead tr {
+  @include media-query($on-palm) {
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+  }
+}
+
+tr {
+  @include media-query($on-palm) {
+    border: 10px solid $strong-orange-color;
+  }
+}
+
+td {
+  @include media-query($on-palm) {
+    border: none;
+    border-bottom: 4px solid;
+    position: relative;
+  }
+}
+
+#polynomials {
+  text-align: center;
+  @include media-query($on-palm) {
+    font-size: 1.1rem;
+  }
 }

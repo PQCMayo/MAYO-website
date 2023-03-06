@@ -15,19 +15,19 @@ usemathjax: true
   <p>We select and implement four parameter sets: For <strong>NIST security level 1</strong>, we select two parameter sets: <code>MAYO_one</code> and <code>MAYO_two</code>, where <code>MAYO_one</code> has smaller public keys but larger signatures and conversely <code>MAYO_two</code> has smaller signatures but larger public keys. For <strong>NIST security level 3</strong> and <strong>NIST security level 5</strong>, we select one parameter set each, which we refer to as <code>MAYO_three</code> and <code>MAYO_five</code>, respectively. The parameter sets and the corresponding key and signature sizes are displayed below.</p>
 	<br>
 	<p>Our chosen parameter sets use the following three irreducible polynomials in $F_{16}[z]$ (the first one is used both in <code>MAYO_one</code> and <code>MAYO_two</code>):
-
-\begin{align*}
-    \begin{array}{r c l l l l l l}
-        f_{64}(z)  & = & z^{64}  &        &+ x^3 z^3 &+ x z^2 &        & + x^3  \\
-        f_{96}(z)  & = & z^{96}  &        &+   x z^3 &        &+ x z   & + x     \\
-        f_{128}(z) & = & z^{128} &+ x z^4 &+ x^2 z^3 &        &+ x^3 z & + x^2
-    \end{array}
-\end{align*}
+  <br>
+  <br>
+  <div id="polynomials">
+    <p>$f_{64}(z) = z^{64} + x^3 z^3 + x z^2 + x^3$</p>
+    <p>$f_{96}(z) = z^{96} + x z^3 + x z + x$</p>
+    <p>$f_{128}(z) = z^{128} + x z^4 + x^2 z^3 + x^3 z + x^2$</p>
+  </div>
 
 	<br>
 	<br>
 <center>
-<table>
+
+<table class="param-table">
     <tr>
         <th>Parameter set</th>
         <td><code>MAYO_one</code></td>
