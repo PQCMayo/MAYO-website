@@ -2,6 +2,7 @@
  * Site header
  */
 .site-header {
+    width: 100%;
     //fix the header in the top
 }
 
@@ -65,13 +66,16 @@
  * Site footer
  */
 .site-footer {
-    position: absolute;
-    width: 100%;
     background-color: $strong-orange-color;
+    margin-top: auto;
+    border: solid;
+    padding-right: $spacing-unit;
+    padding-left: $spacing-unit;
 
-  @include media-query($on-palm) {
-    position: relative;
-  }
+    @include media-query($on-laptop) {
+        padding-right: $spacing-unit / 2;
+        padding-left: $spacing-unit / 2;
+    }
 }
 
 .contact-list,
