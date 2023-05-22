@@ -65,8 +65,14 @@
  * Site footer
  */
 .site-footer {
-    padding: $spacing-unit;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
     background-color: $strong-orange-color;
+
+  @include media-query($on-palm) {
+    position: relative;
+  }
 }
 
 .contact-list,
