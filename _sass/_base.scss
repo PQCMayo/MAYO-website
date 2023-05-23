@@ -91,6 +91,32 @@ a {
     border: solid;
     margin-bottom: 5rem;
     margin-top: 5rem;
+    padding-bottom: 3rem;
+    min-height: 800px;
+
+    @extend %clearfix;
+
+    @include media-query($on-palm) {
+        margin-bottom: 3rem;
+        margin-top: 1rem;
+        padding-right: $spacing-unit / 2;
+        padding-left: $spacing-unit / 2;
+    }
+
+    > a {
+        background-color: white;
+    }
+}
+
+.wrapper-home {
+    padding-right: $spacing-unit;
+    padding-left: $spacing-unit;
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+    border: solid;
+    margin-bottom: 5rem;
+    margin-top: 5rem;
+    min-height: 600px;
 
     @extend %clearfix;
 
