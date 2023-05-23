@@ -67,7 +67,6 @@
  */
 .site-footer {
     background-color: $strong-orange-color;
-    margin-top: auto;
     border: solid;
     padding-right: $spacing-unit;
     padding-left: $spacing-unit;
@@ -76,6 +75,7 @@
         padding-right: $spacing-unit / 2;
         padding-left: $spacing-unit / 2;
     }
+
 }
 
 .contact-list,

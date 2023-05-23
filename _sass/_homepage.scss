@@ -7,7 +7,7 @@
   margin-top: 2rem;
   background-color: $strong-orange-color;
   @include media-query($on-palm) {
-    min-height: calc(100vh - 40px);
+    min-height: calc(60vh - 5px);
   }
 }
 

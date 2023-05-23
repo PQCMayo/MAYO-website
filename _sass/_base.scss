@@ -20,6 +20,11 @@ body {
     color: $text-color;
     background-color: $background-color;
     -webkit-text-size-adjust: $full-width;
+    min-height: 100%;
+
+    @include media-query($on-laptop) {
+        margin-left: 0.5rem;
+    }
 }
 
 
@@ -81,18 +86,17 @@ a {
  * Wrapper
  */
 .wrapper {
-    margin-right: auto;
-    margin-left: auto;
-    margin-bottom: 3rem;
     padding-right: $spacing-unit;
     padding-left: $spacing-unit;
     border: solid;
+    margin-bottom: 5rem;
+    margin-top: 5rem;
 
     @extend %clearfix;
 
-    @include media-query($on-laptop) {
-        max-width: -webkit-calc(#{$content-width} - (#{$spacing-unit}));
-        max-width:         calc(#{$content-width} - (#{$spacing-unit}));
+    @include media-query($on-palm) {
+        margin-bottom: 3rem;
+        margin-top: 1rem;
         padding-right: $spacing-unit / 2;
         padding-left: $spacing-unit / 2;
     }
@@ -102,6 +106,27 @@ a {
     }
 }
 
+.wrapper-header {
+    padding-right: $spacing-unit;
+    padding-left: $spacing-unit;
+    border: solid;
+
+    @extend %clearfix;
+
+    @include media-query($on-laptop) {
+        margin-bottom: 12rem;
+    }
+
+    @include media-query($on-palm) {
+        margin-bottom: 3rem;
+        padding-right: $spacing-unit / 2;
+        padding-left: $spacing-unit / 2;
+    }
+
+    > a {
+        background-color: white;
+    }
+}
 .division {
 
     @include media-query($on-palm) {
