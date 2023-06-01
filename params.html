@@ -56,13 +56,13 @@ usemathjax: true
 </center>
 <br>
 
-	<h3>Cycle counts for our reference implementation:</h3>
+	<h3>Cycle counts for our optimized implementation:</h3>
   <br>
 	<p>The fastest results on the 2.0 GHz Ice Lake platform perform KeyGen in 55 μs, Signing (+ExpandSK) in 246 μs, and Verifying (+ExpandPK) in 77 μs with <code>MAYO_one</code>. Batch signing (without expandSK) is fastest with 126 μs and <code>MAYO_two</code>. Batch verification (without expandPK) is fastest with 30 μs and <code>MAYO_two</code>.</p>
 	<br>
-	<p>All builds use <code>-O3</code> compiler optimization level and <code>-march=native</code> build architecture. Turbo Boost was deactivated to achieve consistent timings. We report the CPU cycles.</p>
-	<br>
-	<p>On Intel Xeon E3-1225 v3 CPU (Haswell) at 3.20GHz for the reference implementation:</p>
+	<p>All builds use <code>-O3</code> compiler optimization level and <code>-march=native</code> build architecture. Turbo Boost was deactivated to achieve consistent timings. We report the CPU cycles using AES-NI.</p>
+<br>
+<p>On Intel Xeon Gold 6338 CPU (Ice Lake) with 2.0 GHz for the optimized implementation:</p>
 <br>
 <center>
 <table>
@@ -74,116 +74,33 @@ usemathjax: true
     </tr>
     <tr>
         <td><code>MAYO_one</td>
-        <td>2,964,948</td>
-        <td>6,787,356</td>
-        <td>2,996,968</td>
+        <td>222,666</td>
+        <td>1,087,794</td>
+        <td>205,692</td>
     </tr>
     <tr>
         <td><code>MAYO_two</td>
-        <td>6,348,792</td>
-        <td>9,290,400</td>
-        <td>2,813,708</td>
+        <td>613,636</td>
+        <td>1,269,250</td>
+        <td>118,534</td>
     </tr>
     <tr>
         <td><code>MAYO_three</td>
-        <td>10,670,888</td>
-        <td>23,816,456</td>
-        <td>9,619,732</td>
+        <td>2,917,294</td>
+        <td>8,839,058</td>
+        <td>1,470,684</td>
     </tr>
     <tr>
         <td><code>MAYO_five</td>
-        <td>27,467,616</td>
-        <td>59,571,696</td>
-        <td>21,619,600</td>
-    </tr>
-</table>
-</center>
-<br>
-<p>The library was compiled on Ubuntu with clang version 12.0.0-3ubuntu1 20.04.5. Results are the median of 1000 benchmark runs.</p>
-<br>
-<p>On Intel Xeon E3-1260L v5 CPU (Skylake) at 2.90GHz for the reference implementation:</p>
-<br>
-<center>
-<table>
-    <tr>
-        <td>Scheme</td>
-        <td>KeyGen</td>
-        <td>ExpandSK + Sign</td>
-        <td>ExpandPK + Verify</td>
-    </tr>
-    <tr>
-        <td><code>MAYO_one</td>
-        <td>2,579,188</td>
-        <td>5,510,453</td>
-        <td>2,703,716</td>
-    </tr>
-    <tr>
-        <td><code>MAYO_two</td>
-        <td>5,212,735</td>
-        <td>7,455,052</td>
-        <td>2,720,520</td>
-    </tr>
-    <tr>
-        <td><code>MAYO_three</td>
-        <td>9,429,436</td>
-        <td>19,672,365</td>
-        <td>8,727,014</td>
-    </tr>
-    <tr>
-        <td><code>MAYO_five</td>
-        <td>24,584,060</td>
-        <td>50,208,488</td>
-        <td>20,593,825</td>
-    </tr>
-</table>
-</center>
-<br>
-<p>The library was compiled on Ubuntu with clang version 14.0.0-1ubuntu1 20.04.5. Results are the median of 1000 benchmark runs.</p>
-<br>
-<p>On Intel Xeon Gold 6338 CPU (Ice Lake) with 2.0 GHz for the reference implementation:</p>
-<br>
-<center>
-<table>
-    <tr>
-        <td>Scheme</td>
-        <td>KeyGen</td>
-        <td>ExpandSK + Sign</td>
-        <td>ExpandPK + Verify</td>
-    </tr>
-    <tr>
-        <td><code>MAYO_one</td>
-        <td>2,507,492</td>
-        <td>5,569,740</td>
-        <td>2,472,986</td>
-    </tr>
-    <tr>
-        <td><code>MAYO_two</td>
-        <td>5,256,656</td>
-        <td>7,494,964</td>
-        <td>2,424,594</td>
-    </tr>
-    <tr>
-        <td><code>MAYO_three</td>
-        <td>9,063,206</td>
-        <td>19,164,488</td>
-        <td>9,687,716</td>
-    </tr>
-    <tr>
-        <td><code>MAYO_five</td>
-        <td>23,216,914</td>
-        <td>48,646,392</td>
-        <td>18,818,812</td>
+        <td>4,263,490</td>
+        <td>13,928,986</td>
+        <td>1,783,626</td>
     </tr>
 </table>
 </center>
 <br>
 <p>The library was compiled on Ubuntu with clang version 12.0.1-19ubuntu3. Results are the median of 1000 benchmark runs.</p>
 <br>
-<br>
-
-	<h3>Cycle counts for our optimized implementation:</h3>
-  <br>
-	<p>All builds use <code>-O3</code> compiler optimization level and <code>-march=native</code> build architecture. Turbo Boost was deactivated to achieve consistent timings. We report the CPU cycles using AES-NI.</p>
 	<br>
 	<p>On Intel Xeon E3-1225 v3 CPU (Haswell) at 3.20GHz for the optimized implementation:</p>
 <br>
@@ -262,44 +179,4 @@ usemathjax: true
 </center>
 <br>
 <p>The library was compiled on Ubuntu with clang version 14.0.0-1ubuntu1 20.04.5. Results are the median of 1000 benchmark runs.</p>
-<br>
-<p>On Intel Xeon Gold 6338 CPU (Ice Lake) with 2.0 GHz for the optimized implementation:</p>
-<br>
-<center>
-<table>
-    <tr>
-        <td>Scheme</td>
-        <td>KeyGen</td>
-        <td>ExpandSK + Sign</td>
-        <td>ExpandPK + Verify</td>
-    </tr>
-    <tr>
-        <td><code>MAYO_one</td>
-        <td>222,666</td>
-        <td>1,087,794</td>
-        <td>205,692</td>
-    </tr>
-    <tr>
-        <td><code>MAYO_two</td>
-        <td>613,636</td>
-        <td>1,269,250</td>
-        <td>118,534</td>
-    </tr>
-    <tr>
-        <td><code>MAYO_three</td>
-        <td>2,917,294</td>
-        <td>8,839,058</td>
-        <td>1,470,684</td>
-    </tr>
-    <tr>
-        <td><code>MAYO_five</td>
-        <td>4,263,490</td>
-        <td>13,928,986</td>
-        <td>1,783,626</td>
-    </tr>
-</table>
-</center>
-<br>
-<p>The library was compiled on Ubuntu with clang version 12.0.1-19ubuntu3. Results are the median of 1000 benchmark runs.</p>
-<br>
 </div>
