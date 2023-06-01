@@ -12,6 +12,15 @@ tags: menu
 	<br>
 	<p>Our C implementation can be found <a href="https://github.com/PQCMayo/MAYO-C" target="_blank">here</a>.</p>
 	<br>
+	<p>The library provides a reference, optimize and Intel AVX2 optimized implementation.</p>
+	<p>AES-NI is used by default, if available, in the optimized versions.</p>
+	<p>They can be built by:</p>
+	<ul>
+	  <li><b>Reference:</b> build with CMake with the option <code>-DMAYO BUILD TYPE=ref</code>.</li>
+	  <li><b>Optimize:</b> build with CMake with the option <code>-DMAYO BUILD TYPE=opt</code>.</li>
+	  <li><b>Intel AVX2 Optimize:</b> build with CMake with the option <code>-DMAYO BUILD TYPE=avx2</code>.</li>
+	</ul>
+	<br>
   <h3>Sage:</h3>
 	<br>
 	<p>Our pure sage implementation can be found <a href="https://github.com/PQCMayo/MAYO-sage" target="_blank">here</a>.</p>
