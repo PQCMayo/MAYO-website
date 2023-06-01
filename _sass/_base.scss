@@ -29,16 +29,10 @@ body {
     background-color: $background-color;
     -webkit-text-size-adjust: $full-width;
     min-height: 100%;
-    overflow: hidden;
 
     @include media-query($on-laptop) {
         margin-left: 0.5rem;
-        &::-webkit-scrollbar {
-          width: 0px;
-          background: transparent; /* make scrollbar transparent */
-          -webkit-appearance: none;
         }
-    }
 }
 
 /**
