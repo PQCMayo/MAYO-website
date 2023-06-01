@@ -60,7 +60,7 @@ usemathjax: true
   <br>
 	<p>The fastest results on the 2.0 GHz Ice Lake platform perform KeyGen in 55 μs, Signing (+ExpandSK) in 246 μs, and Verifying (+ExpandPK) in 77 μs with <code>MAYO_one</code>. Batch signing (without expandSK) is fastest with 126 μs and <code>MAYO_two</code>. Batch verification (without expandPK) is fastest with 30 μs and <code>MAYO_two</code>.</p>
 	<br>
-	<p>All builds use <code>-O3</code> compiler optimization level and <code>-march=native</code> build architecture. Turbo Boost was deactivated to achieve consistent timings. We report the CPU cycles using AES-NI.</p>
+	<p>All builds use <code>-O3</code> compiler optimization level and <code>-march=native</code> build architecture. Turbo Boost was deactivated to achieve consistent timings. We report the CPU cycles using AES-NI. More results can be found in our specification.</p>
 <br>
 <p>On Intel Xeon Gold 6338 CPU (Ice Lake) with 2.0 GHz for the optimized implementation:</p>
 <br>
@@ -179,4 +179,35 @@ usemathjax: true
 </center>
 <br>
 <p>The library was compiled on Ubuntu with clang version 14.0.0-1ubuntu1 20.04.5. Results are the median of 1000 benchmark runs.</p>
+<br>
+	<h3>Arm Cortex-M4 implementation:</h3>
+  <br>
+	<p>We are working on an Arm Cortex-M4 implementation. Preliminary results are shown below.</p>
+	<p>We use the ST NUCLEO-L4R5ZI development board which comes with a STM32L4R5ZI Cortex-M4 CPU with 2MBof flash memory and 640KB of SRAM.</p>
+	<br>
+	<p>All builds use <code>-O3</code> compiler optimization level using the Arm GNU toolchain.</p>
+<br>
+<center>
+<table>
+    <tr>
+        <td>Scheme</td>
+        <td>KeyGen</td>
+        <td>ExpandSK + Sign</td>
+        <td>ExpandPK + Verify</td>
+    </tr>
+    <tr>
+        <td><code>MAYO_one</td>
+        <td>5,245,606</td>
+        <td>9,183,088</td>
+        <td>4,886,583</td>
+    </tr>
+    <tr>
+        <td><code>MAYO_two</td>
+        <td>11,925,130</td>
+        <td>12,033,879</td>
+        <td>5,103,238</td>
+    </tr>
+</table>
+</center>
+	<br>
 </div>
