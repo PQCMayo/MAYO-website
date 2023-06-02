@@ -72,6 +72,9 @@
     padding-left: $spacing-unit;
     margin-left: 3px;
     margin-right: 3px;
+    position: fixed;
+    bottom: 0;
+    width: -webkit-fill-available;
 
     @include media-query($on-laptop) {
         padding-right: $spacing-unit / 2;
