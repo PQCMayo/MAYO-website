@@ -70,6 +70,8 @@
     border: solid;
     padding-right: $spacing-unit;
     padding-left: $spacing-unit;
+    margin-left: 3px;
+    margin-right: 3px;
 
     @include media-query($on-laptop) {
         padding-right: $spacing-unit / 2;
