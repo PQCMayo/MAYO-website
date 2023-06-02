@@ -98,8 +98,8 @@ a {
     border: solid;
     margin-bottom: 5rem;
     margin-top: 5rem;
-    margin-left: 0;
-    margin-right: 0;
+    margin-left: 0px;
+    margin-right: 0px;
     padding-bottom: 3rem;
     min-height: 800px;
 
@@ -125,8 +125,8 @@ a {
     border: solid;
     margin-bottom: 5rem;
     margin-top: 5rem;
-    margin-left: 0;
-    margin-right: 0;
+    margin-left: 0px;
+    margin-right: 0px;
     min-height: 600px;
 
     @extend %clearfix;
@@ -147,8 +147,8 @@ a {
 .wrapper-header {
     padding-right: $spacing-unit;
     padding-left: $spacing-unit;
-    margin-left: 0;
-    margin-right: 0;
+    margin-left: 0px;
+    margin-right: 0px;
     border: solid;
 
     @extend %clearfix;
