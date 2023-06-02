@@ -99,6 +99,7 @@ a {
     margin-bottom: 5rem;
     margin-top: 5rem;
     margin-left: 3px;
+    margin-right: 3px;
     padding-bottom: 3rem;
     min-height: 800px;
 
@@ -125,6 +126,7 @@ a {
     margin-bottom: 5rem;
     margin-top: 5rem;
     margin-left: 3px;
+    margin-right: 3px;
     min-height: 600px;
 
     @extend %clearfix;
@@ -146,6 +148,7 @@ a {
     padding-right: $spacing-unit;
     padding-left: $spacing-unit;
     margin-left: 3px;
+    margin-right: 3px;
     border: solid;
 
     @extend %clearfix;
