@@ -94,7 +94,6 @@
         padding-right: $spacing-unit / 2;
         padding-left: $spacing-unit / 2;
     }
-
 }
 
 .contact-list,
@@ -112,7 +111,13 @@
 }
 
 .footer-col-wrapper {
+    display: flex;
+    flex-direction: row;
     margin-left: -$spacing-unit / 3;
+
+    @include media-query($on-palm) {
+        flex-direction: column;
+    }
 }
 
 .footer-col {
@@ -127,27 +132,15 @@
 }
 
 
-@include media-query($on-laptop) {
-    .footer-col-1 {
-        width: -webkit-calc(50% - (#{$spacing-unit} / 2));
-        width:         calc(50% - (#{$spacing-unit} / 2));
-    }
-}
-
 @include media-query($on-palm) {
     .footer-col {
-        float: none;
-        width: -webkit-calc($full-width - (#{$spacing-unit} / 2));
-        width:         calc($full-width - (#{$spacing-unit} / 2));
 
         > h1 {
           font-size: 20px;
-          margin-bottom: 10px;
         }
 
         > p {
           font-size: 15px;
-          margin-bottom: 10px;
         }
     }
 }

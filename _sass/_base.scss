@@ -354,10 +354,9 @@ $icon-github: (
 .copyright {
    font-size: 11px;
    text-align: left;
-   margin-left: 10px;
 
    > .top-copyright {
-       padding-top: 80px;
+       padding-top: 2rem;
    }
 
    @include media-query($on-palm) {
