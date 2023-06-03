@@ -143,14 +143,12 @@ a {
 .wrapper-header {
     padding-right: $spacing-unit;
     padding-left: $spacing-unit;
-    margin-left: 3px;
-    margin-right: 3px;
     border: solid;
 
     @extend %clearfix;
 
     @include media-query($on-laptop) {
-        margin-bottom: 12rem;
+        margin-bottom: 10rem;
     }
 
     @include media-query($on-palm) {
@@ -163,10 +161,10 @@ a {
         background-color: white;
     }
 }
-.division {
 
+.division {
     @include media-query($on-palm) {
-    transform: skewY(-15deg);
+      transform: skewY(-15deg);
     }
 }
 
@@ -196,6 +194,7 @@ a {
 
     @include media-query($on-palm) {
         width: 40%;
+        padding-top: 0.5rem;
     }
 }
 
