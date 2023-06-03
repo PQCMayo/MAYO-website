@@ -19,9 +19,11 @@
 .home-container {
   display: -webkit-flex;
   display: flex;
+  padding: 5rem;
 
   @include media-query($on-palm) {
     display: block;
+    padding: 0;
   }
 }
 
