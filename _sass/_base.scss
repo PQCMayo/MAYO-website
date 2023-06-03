@@ -29,10 +29,6 @@ body {
     background-color: $background-color;
     -webkit-text-size-adjust: $full-width;
     min-height: 100%;
-
-    @include media-query($on-laptop) {
-        margin-left: 0.5rem;
-        }
 }
 
 /**
