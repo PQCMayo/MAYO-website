@@ -44,8 +44,8 @@
 .intro {
     width: auto;
     padding-bottom: 25px;
-    margin-top: 70px;
-    margin-left: 40px;
+    margin-top: 3.3rem;
+    margin-left: 3rem;
 
     > .inside-image {
       width: $full-width;
@@ -53,8 +53,8 @@
 
   @include media-query($on-palm) {
     padding-bottom: 20px;
-    margin-top: 10px;
-    margin-left: 100px;
+    margin-top: 2rem;
+    margin-left: 10rem;
 
     > .inside-image {
       width: $full-width;
@@ -89,6 +89,10 @@
     margin-bottom: 3rem;
     margin-left: 2.5rem;
     margin-right: 2.5rem;
+  }
+
+  > p {
+    margin-bottom: 0.5rem;
   }
 }
 
