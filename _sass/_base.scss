@@ -28,7 +28,9 @@ body {
     color: $text-color;
     background-color: $background-color;
     -webkit-text-size-adjust: $full-width;
-    min-height: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
 /**

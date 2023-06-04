@@ -89,6 +89,7 @@
     padding-left: $spacing-unit;
     left: 0;
     bottom: 0;
+    margin-top: auto;
 
     @include media-query($on-laptop) {
         padding-right: $spacing-unit / 2;
