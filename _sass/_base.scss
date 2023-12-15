@@ -79,6 +79,7 @@ a {
     text-decoration: none;
     background-color: $orange-hover-color;
     padding: 5px;
+    word-wrap: break-word;
 
     &:hover {
       color: $white-color;
