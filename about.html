@@ -61,7 +61,7 @@ where the $E_{ij} \in F_q^{m \times m}$ are fixed public matrices (for security 
         P^*(v_1 + o_1, \dots, v_k + o_k) = t \, \]
 which is a system of $m$ linear equations in $ko$ variables.</p>
    <br>
-	 <p>This approach drastically reduces the public key size, since all but approximately $mo^2/2$ coefficients of $P$ can be expanded publicly from a short seed. For example, one of the parameter sets we propose for NIST security level 1 is $(n,m,o,k,q) = $ (66,64,8,9,16), which results in a public key of $1168$ bytes, and a signature size of 321 bytes (297 bytes for $s$ and 24 bytes for the salt). Compared to the compressed Oil and Vinegar scheme at the same security level this is a 58-fold reduction in public key size, at the cost of a 3-fold increase in signature size.</p>
+	 <p>This approach drastically reduces the public key size, since all but approximately $mo^2/2$ coefficients of $P$ can be expanded publicly from a short seed. For example, one of the parameter sets we propose for NIST security level 1 is $(n,m,o,k,q) = (81, 64, 17, 4, 16)$, which results in a public key of $4912$ bytes, and a signature size of $186$ bytes ($162$ bytes for $s$ and $24$ bytes for the salt). Compared to the compressed Oil and Vinegar scheme at the same security level this is a $14$-fold reduction in public key size, at the cost of a $2$-fold increase in signature size.</p>
    <br>
    <br>
 </div>
