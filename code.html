@@ -13,7 +13,7 @@ tags: menu
 	<br>
 	<p>Our C implementation can be found <a href="https://github.com/PQCMayo/MAYO-C" target="_blank">here</a>.</p>
 	<br>
-	<p>The library provides a reference, optimized and Intel AVX2 optimized implementation.</p>
+	<p>The library provides a reference implementation, an optimized implementation, an Intel AVX2 optimized implementation, an Intel AVX-512/GFNI optimized implementation, and an Arm NEON optimized implementation.</p>
 	<p>AES-NI is used by default, if available, in the optimized versions.</p>
 	<br>
 	<p>They can be built in this way:</p>
@@ -21,6 +21,8 @@ tags: menu
 	  <li><b>Reference:</b> build with CMake with the option: <code id="flags">-DMAYO_BUILD_TYPE=ref</code>.</li>
 	  <li><b>Optimize:</b> build with CMake with the option: <code id="flags">-DMAYO_BUILD_TYPE=opt</code>.</li>
 	  <li><b>Intel AVX2 Optimize:</b> build with CMake with the option for avx2 op: <code id="flags">-DMAYO_BUILD_TYPE=avx2</code>.</li>
+	  <li><b>Intel AVX-512/GFNI Optimize:</b> build with CMake with the option: <code id="flags">-DMAYO_BUILD_TYPE=gfni</code>. This requires a host CPU supporting AVX-512 and GFNI; where VAES is also present, AES-CTR uses the 512-bit VAES path.</li>
+	  <li><b>Arm NEON Optimize:</b> build with CMake with the option: <code id="flags">-DMAYO_BUILD_TYPE=neon</code>.</li>
 	</ul>
 	<hr>
 	<br>

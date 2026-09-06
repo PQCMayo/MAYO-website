@@ -10,7 +10,7 @@ usemathjax: true
   <br>
 	<h3>Parameters: </h3>
   <br>
-  <p>Our current parameters are (note that this might change):</p>
+  <p>The parameter sets below are the ones of our round-3 submission.</p>
   <br>
   <p>We select and implement four parameter sets: For <strong>NIST security level 1</strong>, we select two parameter sets: <code>MAYO_one</code> and <code>MAYO_two</code>, where <code>MAYO_one</code> has smaller public keys but larger signatures and conversely <code>MAYO_two</code> has smaller signatures but larger public keys. For <strong>NIST security level 3</strong> and <strong>NIST security level 5</strong>, we select one parameter set each, which we refer to as <code>MAYO_three</code> and <code>MAYO_five</code>, respectively. The parameter sets and the corresponding key and signature sizes are displayed below. All sizes are reported in bytes -B-.</p>
 	<br>
@@ -32,6 +32,13 @@ usemathjax: true
         <td>5</td>
     </tr>
     <tr>
+        <th>$(n,m,o,k,q)$</th>
+        <td>(88, 80, 8, 10, 16)</td>
+        <td>(86, 64, 13, 5, 16)</td>
+        <td>(118, 108, 10, 11, 16)</td>
+        <td>(154, 142, 12, 12, 16)</td>
+    </tr>
+    <tr>
         <th>secret key size</th>
         <td>24 B</td>
         <td>24 B</td>
@@ -40,28 +47,78 @@ usemathjax: true
     </tr>
     <tr>
         <th>public key size</th>
-        <td>1420 B</td>
-        <td>4912 B</td>
+        <td>1456 B</td>
+        <td>2928 B</td>
         <td>2986 B</td>
         <td>5554 B</td>
     </tr>
     <tr>
         <th>signature size</th>
-        <td>454 B</td>
-        <td>186 B</td>
+        <td>464 B</td>
+        <td>239 B</td>
         <td>681 B</td>
         <td>964 B</td>
     </tr>
 </table>
 </center>
 <br>
+<p>Our specification also lists a range of additional parameter sets that showcase the possible trade-offs between public key size and signature size at each security level.</p>
+<br>
 
-	<h3>Cycle counts for our AVX2 optimized implementation:</h3>
+	<h3>Cycle counts:</h3>
   <br>
-	<p>The fastest results on the 2.0 GHz Ice Lake platform perform KeyGen in 55 μs, Signing (+ExpandSK) in 246 μs, and Verifying (+ExpandPK) in 77 μs with <code>MAYO_one</code>. Batch signing (without expandSK) is fastest with 126 μs and <code>MAYO_two</code>. Batch verification (without expandPK) is fastest with 30 μs and <code>MAYO_two</code>.</p>
+	<p>The fastest results on Intel x86-64 are on the 2.0 GHz Ice Lake platform, on which <code>MAYO_two</code> performs KeyGen in 26.9 μs, Signing (+ExpandSK) in 50.6 μs, and Verifying (+ExpandPK) in 20.9 μs with the GFNI/AVX-512 implementation. Batch signing (without ExpandSK) takes 31.3 μs, and batch verification (without ExpandPK) takes 11.4 μs.</p>
 	<br>
 	<p>All builds use <code>-O3</code> compiler optimization level and <code>-march=native</code> build architecture. Turbo Boost was deactivated to achieve consistent timings. We report the CPU cycles using AES-NI. More results can be found in our specification.</p>
 <br>
+
+	<h3>Cycle counts for our GFNI/AVX-512 optimized implementation:</h3>
+  <br>
+<p>The GFNI implementation requires the AVX-512F, AVX-512BW, and GFNI instruction set extensions, available on Intel server architectures since Ice Lake and on AMD architectures since Zen 4. It was therefore evaluated on Ice Lake only.</p>
+<br>
+<p>On Intel Xeon Gold 6338 CPU (Ice Lake) with 2.0 GHz:</p>
+<br>
+<center>
+<table>
+    <tr>
+        <td>Scheme</td>
+        <td>KeyGen</td>
+        <td>ExpandSK + Sign</td>
+        <td>ExpandPK + Verify</td>
+    </tr>
+    <tr>
+        <td><code>MAYO_one</td>
+        <td>66,210</td>
+        <td>166,390</td>
+        <td>73,926</td>
+    </tr>
+    <tr>
+        <td><code>MAYO_two</td>
+        <td>53,874</td>
+        <td>101,126</td>
+        <td>41,890</td>
+    </tr>
+    <tr>
+        <td><code>MAYO_three</td>
+        <td>149,334</td>
+        <td>337,246</td>
+        <td>152,066</td>
+    </tr>
+    <tr>
+        <td><code>MAYO_five</td>
+        <td>325,646</td>
+        <td>752,656</td>
+        <td>348,120</td>
+    </tr>
+</table>
+</center>
+<br>
+<p>The library was compiled on Ubuntu with clang version 18.1.8. Results are the median of 1000 benchmark runs.</p>
+<br>
+<br>
+
+	<h3>Cycle counts for our AVX2 optimized implementation:</h3>
+  <br>
 <p>On Intel Xeon Gold 6338 CPU (Ice Lake) with 2.0 GHz for the AVX2 optimized implementation:</p>
 <br>
 <center>
@@ -74,27 +131,27 @@ usemathjax: true
     </tr>
     <tr>
         <td><code>MAYO_one</td>
-        <td>118,704</td>
-        <td>471,028</td>
-        <td>153,266</td>
+        <td>87,002</td>
+        <td>289,238</td>
+        <td>119,452</td>
     </tr>
     <tr>
         <td><code>MAYO_two</td>
-        <td>96,288</td>
-        <td>286,028</td>
-        <td>56,374</td>
+        <td>72,552</td>
+        <td>140,176</td>
+        <td>49,064</td>
     </tr>
     <tr>
         <td><code>MAYO_three</td>
-        <td>282,446</td>
-        <td>1,017,216</td>
-        <td>347,972</td>
+        <td>197,720</td>
+        <td>597,392</td>
+        <td>244,284</td>
     </tr>
     <tr>
         <td><code>MAYO_five</td>
-        <td>766,682</td>
-        <td>2,387,350</td>
-        <td>853,920</td>
+        <td>571,546</td>
+        <td>1,515,402</td>
+        <td>639,410</td>
     </tr>
 </table>
 </center>
@@ -114,34 +171,34 @@ usemathjax: true
     </tr>
     <tr>
         <td><code>MAYO_one</td>
-        <td>246,458</td>
-        <td>702,261</td>
-        <td>290,041</td>
+        <td>190,996</td>
+        <td>466,134</td>
+        <td>242,382</td>
     </tr>
     <tr>
         <td><code>MAYO_two</td>
-        <td>153,420</td>
-        <td>375,493</td>
-        <td>96,606</td>
+        <td>152,835</td>
+        <td>232,389</td>
+        <td>112,449</td>
     </tr>
     <tr>
         <td><code>MAYO_three</td>
-        <td>574,472</td>
-        <td>1,476,585</td>
-        <td>664,631</td>
+        <td>451,465</td>
+        <td>1,015,330</td>
+        <td>528,461</td>
     </tr>
     <tr>
         <td><code>MAYO_five</td>
-        <td>1,338,275</td>
-        <td>3,475,547</td>
-        <td>1,488,808</td>
+        <td>1,137,678</td>
+        <td>2,390,175</td>
+        <td>1,254,135</td>
     </tr>
 </table>
 </center>
 <br>
 <p>The library was compiled on Ubuntu with clang version 18.1.3. Results are the median of 1000 benchmark runs.</p>
 <br>
-<p>On Intel Xeon E3-1260L v5 CPU (Skylake) at 2.90GHz for the optimized implementation:</p>
+<p>On Intel i7-6700T CPU (Skylake) at 2.80GHz for the AVX2 optimized implementation:</p>
 <br>
 <center>
 <table>
@@ -153,32 +210,32 @@ usemathjax: true
     </tr>
     <tr>
         <td><code>MAYO_one</td>
-        <td>202,026</td>
-        <td>574,530</td>
-        <td>247,169</td>
+        <td>149,119</td>
+        <td>363,653</td>
+        <td>188,988</td>
     </tr>
     <tr>
         <td><code>MAYO_two</td>
-        <td>157,929</td>
-        <td>327,303</td>
-        <td>96,266</td>
+        <td>123,843</td>
+        <td>175,504</td>
+        <td>86,956</td>
     </tr>
     <tr>
         <td><code>MAYO_three</td>
-        <td>473,424</td>
-        <td>1,260,260</td>
-        <td>589,375</td>
+        <td>361,791</td>
+        <td>789,086</td>
+        <td>407,824</td>
     </tr>
     <tr>
         <td><code>MAYO_five</td>
-        <td>1,197,019</td>
-        <td>3,037,778</td>
-        <td>11,336,685</td>
+        <td>890,231</td>
+        <td>1,852,715</td>
+        <td>969,107</td>
     </tr>
 </table>
 </center>
 <br>
-<p>The library was compiled on Ubuntu with clang version 14.0.0-1ubuntu1 20.04.5. Results are the median of 1000 benchmark runs.</p>
+<p>The library was compiled on Debian with clang version 19.1.7. Results are the median of 1000 benchmark runs.</p>
 <br>
 <br>
 	<h3>Cycle counts for our optimized implementation:</h3>
@@ -197,27 +254,27 @@ usemathjax: true
     </tr>
     <tr>
         <td><code>MAYO_one</td>
-        <td>878,654</td>
-        <td>2,724,374</td>
-        <td>353,682</td>
+        <td>890,892</td>
+        <td>2,531,962</td>
+        <td>320,660</td>
     </tr>
     <tr>
         <td><code>MAYO_two</td>
-        <td>775,382</td>
-        <td>1,541,636</td>
-        <td>104,290</td>
+        <td>1,599,408</td>
+        <td>909,718</td>
+        <td>98,106</td>
     </tr>
     <tr>
         <td><code>MAYO_three</td>
-        <td>3,485,616</td>
-        <td>8,009,012</td>
-        <td>877,112</td>
+        <td>3,424,220</td>
+        <td>6,945,436</td>
+        <td>802,626</td>
     </tr>
     <tr>
         <td><code>MAYO_five</td>
-        <td>7,063,608</td>
-        <td>20,790,296</td>
-        <td>1,775,574</td>
+        <td>6,943,014</td>
+        <td>15,877,932</td>
+        <td>1,558,240</td>
     </tr>
 </table>
 </center>
@@ -237,34 +294,34 @@ usemathjax: true
     </tr>
     <tr>
         <td><code>MAYO_one</td>
-        <td>1,052,858</td>
-        <td>3,171,356</td>
-        <td>530,101</td>
+        <td>944,171</td>
+        <td>2,349,559</td>
+        <td>471,308</td>
     </tr>
     <tr>
         <td><code>MAYO_two</td>
-        <td>1,275,893</td>
-        <td>2,422,209</td>
-        <td>148,387</td>
+        <td>977,728</td>
+        <td>1,052,726</td>
+        <td>169,372</td>
     </tr>
     <tr>
         <td><code>MAYO_three</td>
-        <td>3,230,269</td>
-        <td>10,725,576</td>
-        <td>1,313,842</td>
+        <td>2,754,470</td>
+        <td>6,245,908</td>
+        <td>1,158,512</td>
     </tr>
     <tr>
         <td><code>MAYO_five</td>
-        <td>8,041,769</td>
-        <td>21,918,131</td>
-        <td>2,400,637</td>
+        <td>8,485,033</td>
+        <td>18,541,749</td>
+        <td>2,137,340</td>
     </tr>
 </table>
 </center>
 <br>
 <p>The library was compiled on Ubuntu with clang version 18.1.3. Results are the median of 1000 benchmark runs.</p>
 <br>
-<p>On Intel Xeon E3-1260L v5 CPU (Skylake) at 2.90GHz for the optimized implementation:</p>
+<p>On Intel i7-6700T CPU (Skylake) at 2.80GHz for the optimized implementation:</p>
 <br>
 <center>
 <table>
@@ -276,36 +333,35 @@ usemathjax: true
     </tr>
     <tr>
         <td><code>MAYO_one</td>
-        <td>899,214</td>
-        <td>2,797,221</td>
-        <td>441,935</td>
+        <td>839,914</td>
+        <td>1,831,210</td>
+        <td>370,396</td>
     </tr>
     <tr>
         <td><code>MAYO_two</td>
-        <td>1,103,437</td>
-        <td>1,868,567</td>
-        <td>142,224</td>
+        <td>765,983</td>
+        <td>817,049</td>
+        <td>131,986</td>
     </tr>
     <tr>
         <td><code>MAYO_three</td>
-        <td>2,998,299</td>
-        <td>8,615,942</td>
-        <td>1,119,046</td>
+        <td>2,478,116</td>
+        <td>4,789,861</td>
+        <td>894,661</td>
     </tr>
     <tr>
         <td><code>MAYO_five</td>
-        <td>8,372,676</td>
-        <td>23,777,500</td>
-        <td>2,106,202</td>
+        <td>6,595,713</td>
+        <td>14,340,039</td>
+        <td>1,696,101</td>
     </tr>
 </table>
 </center>
 <br>
-<p>The library was compiled on Ubuntu with clang version 14.0.0-1ubuntu1 20.04.5. Results are the median of 1000 benchmark runs.</p>
+<p>The library was compiled on Debian with clang version 19.1.7. Results are the median of 1000 benchmark runs.</p>
 <br>
 	<h3>Arm Cortex-M4 implementation:</h3>
   <br>
-	<p>We are working on an Arm Cortex-M4 implementation. Results are shown below.</p>
 	<p>We use the ST NUCLEO-L4R5ZI development board which comes with a <code>STM32L4R5ZI</code> Cortex-M4 CPU with $2$MB of flash memory and $640$KB of SRAM.</p>
 	<br>
 	<p>All builds use <code>-O3</code> compiler optimization level using the Arm GNU toolchain.</p>
@@ -320,28 +376,30 @@ usemathjax: true
     </tr>
     <tr>
         <td><code>MAYO_one</td>
-        <td>9,572,510</td>
-        <td>16,911,188</td>
-        <td>11,242,036</td>
+        <td>9,631,297</td>
+        <td>19,223,231</td>
+        <td>11,539,985</td>
     </tr>
     <tr>
         <td><code>MAYO_two</td>
-        <td>9,574,993</td>
-        <td>11,003,859</td>
-        <td>6,027,831</td>
+        <td>8,898,780</td>
+        <td>10,312,833</td>
+        <td>6,888,289</td>
     </tr>
     <tr>
         <td><code>MAYO_three</td>
-        <td>27,170,014</td>
-        <td>45,428,633</td>
-        <td>28,446,049</td>
+        <td>27,169,341</td>
+        <td>43,708,718</td>
+        <td>28,475,402</td>
     </tr>
 </table>
 </center>
 <br>
+<p>The library was compiled with the Arm GNU toolchain (<code>arm-none-eabi-gcc</code> 13.2.1). Results are the average of 1000 benchmark runs.</p>
+<br>
 	<h3>Arm Neon implementation:</h3>
   <br>
-	<p>The NEON implementation is built with CMake option <code>-DMAYO BUILD TYPE=neon</code>. AES acceleration is used by default, if available. We have tested the implementation on Apple M1, M2, and M3 processors. We report the M3 results here.
+	<p>The NEON implementation is built with CMake option <code>-DMAYO_BUILD_TYPE=neon</code>. AES acceleration is used by default, if available. We report results on an Apple M3 processor.</p>
 <br>
 <center>
 <table>
@@ -353,29 +411,31 @@ usemathjax: true
     </tr>
     <tr>
         <td><code>MAYO_one</td>
-        <td>131,133</td>
-        <td>429,283</td>
-        <td>169,516</td>
+        <td>123,271</td>
+        <td>381,390</td>
+        <td>213,224</td>
     </tr>
     <tr>
         <td><code>MAYO_two</td>
-        <td>125,437</td>
-        <td>279,380</td>
-        <td>72,482</td>
+        <td>112,322</td>
+        <td>214,151</td>
+        <td>128,003</td>
     </tr>
     <tr>
         <td><code>MAYO_three</td>
-        <td>386,820</td>
-        <td>1,039,799</td>
-        <td>454,799</td>
+        <td>334,458</td>
+        <td>892,572</td>
+        <td>512,092</td>
     </tr>
     <tr>
-        <td><code>MAYO_four</td>
-        <td>895,085</td>
-        <td>2,217,257</td>
-        <td>948,399</td>
+        <td><code>MAYO_five</td>
+        <td>795,090</td>
+        <td>1,789,597</td>
+        <td>1,033,879</td>
     </tr>
 </table>
 </center>
+<br>
+<p>The library was compiled with the Apple clang toolchain (<code>clang-1700.4.4.1</code>). Results are the average of 1000 benchmark runs.</p>
 	<br>
 </div>

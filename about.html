@@ -35,6 +35,8 @@ The Oil and Vinegar signature scheme, proposed in 1997 by Patarin, is one of the
 
 is a system of $m$ linear equations in $m$ variables (since $O$ has dimension $m$). The signer outputs the signature $s = v + o$. To verify a signature, the verifier simply recomputes $P(s)$ and the hash digest $t$ and verifies that they are equal.</p>
   <br>
+  <p>An arbitrary linear map $L : F_q^n \rightarrow F_q^m$ can be added to $P$ without breaking the trapdoor: the same strategy still samples preimages, because $L(o)$ is linear in $o$. Kipnis, Patarin, and Goubin proposed in the UOV paper to derive $L$ from a hash of the salted message, so that the trapdoor function is different for each signature. This prevents claw-finding attacks and is essentially free. MAYO adopts this idea; see below.</p>
+  <br>
   <p>One practical drawback of the scheme is that the public map $P$ consists of approximately $mn^2/2$ coefficients. We can sample $P$ such that approximately $m(n^2 - m^2)/2$ of the coefficients can be expanded publicly from a short seed, but the remaining $m^3/2$ coefficient still make for a relatively large public key size. (e.g., $66$ KB for 128 bits of security). This problem is solved by MAYO.</p>
 	<br>
   <h3>MAYO</h3>
@@ -57,11 +59,13 @@ where the $E_{ij} \in F_q^{m \times m}$ are fixed public matrices (for security 
 	$P'(x, y) := P(x + y) - P(x) - P(y).$
 	</div>
 	<br>
-	<p>We choose parameters such that $ko >m$ to make sure that the space $O^k$ is large enough so that the signer can sample signatures $s = (s_1, \cdots, s_k)$ such that $P^*(s) = t$ with the usual Oil and Vinegar approach. The signer first samples $(v_1, \dots, v_k) \in F_q^{kn}$ at random, and then solves for $(o_1, \dots o_k) \in O^k$ such that \[
-        P^*(v_1 + o_1, \dots, v_k + o_k) = t \, \]
+	<p>We choose parameters such that $ko \geq m$ to make sure that the space $O^k$ is large enough so that the signer can sample signatures $s = (s_1, \cdots, s_k)$ such that $P^*(s) = t$ with the usual Oil and Vinegar approach. The signer first samples $(v_1, \dots, v_k) \in F_q^{kn}$ at random, and then solves for $(o_1, \dots o_k) \in O^k$ such that \[
+        P^*(v_1 + o_1, \dots, v_k + o_k) + L(v_1 + o_1, \dots, v_k + o_k) = t \, \]
 which is a system of $m$ linear equations in $ko$ variables.</p>
    <br>
-	 <p>This approach drastically reduces the public key size, since all but approximately $mo^2/2$ coefficients of $P$ can be expanded publicly from a short seed. For example, one of the parameter sets we propose for NIST security level 1 is $(n,m,o,k,q) = (81, 64, 17, 4, 16)$, which results in a public key of $4912$ bytes, and a signature size of $186$ bytes ($162$ bytes for $s$ and $24$ bytes for the salt). Compared to the compressed Oil and Vinegar scheme at the same security level this is a $14$-fold reduction in public key size, at the cost of a $2$-fold increase in signature size.</p>
+	 <p>This approach drastically reduces the public key size, since all but approximately $mo^2/2$ coefficients of $P$ can be expanded publicly from a short seed. For example, one of the parameter sets we propose for NIST security level 1 is $(n,m,o,k,q) = (86, 64, 13, 5, 16)$, which results in a public key of just $2928$ bytes, and a signature size of $239$ bytes ($215$ bytes for $s$ and $24$ bytes for the salt). Compared to the compressed Oil and Vinegar scheme at the same security level ($66$ KB) this is a $23$-fold reduction in public key size, at the cost of a $2.5$-fold increase in signature size. We also propose a parameter set with even smaller public keys, but larger signatures.</p>
+   <br>
+	 <p>The linear terms $L$ are there to prevent claw-finding attacks: without them, one could search for a collision between $P^*(s)$ for many candidate signatures $s$ and the hash digest $t$ for many messages, and turn it into a forgery. Since $L$ is derived from the hash of the salted message, both sides of the verification equation now depend on the message, and this search no longer works. We choose $L$ so that it is compatible with the whipping structure of $P^*$, which means it costs essentially nothing in signing and verification time. The details are in our specification.</p>
    <br>
    <br>
 </div>
